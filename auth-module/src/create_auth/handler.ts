@@ -1,13 +1,13 @@
-import {SNS} from "aws-sdk"
+// import {SNS} from "aws-sdk"
 
-const sendSMS = async (phone, code) => {
-    const params = {
-        Message: "Welcome to LeoTrade. Your one time password is " + code, /* required */
-        PhoneNumber: phone,
-    };
-
-    return new SNS({apiVersion: '2010-03-31', region: 'us-east-1'}).publish(params).promise();
-}
+// const sendSMS = async (phone, code) => {
+//     const params = {
+//         Message: "Welcome to LeoTrade. Your one time password is " + code, /* required */
+//         PhoneNumber: phone,
+//     };
+//
+//     return new SNS({apiVersion: '2010-03-31', region: 'us-east-1'}).publish(params).promise();
+// }
 
 
 export const createAuthChallenge = async (event) => {
@@ -17,7 +17,7 @@ export const createAuthChallenge = async (event) => {
     if (!event.request.session || !event.request.session.length) {
 
         // Generate a new secret login code and send it to the user
-        let str = new Date().getTime().toString()
+        // let str = new Date().getTime().toString()
         secretLoginCode = "3019"
             // str.substr(str.length - 4);
         console.log(secretLoginCode)

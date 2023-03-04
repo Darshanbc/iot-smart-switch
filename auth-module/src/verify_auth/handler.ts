@@ -1,6 +1,6 @@
 
-import {CognitoIdentityServiceProvider} from "aws-sdk"
-const cognitoIdentityServiceProvider = new CognitoIdentityServiceProvider();
+// import {CognitoIdentityServiceProvider} from "aws-sdk"
+// const cognitoIdentityServiceProvider = new CognitoIdentityServiceProvider();
 
 
 // const  addUserToDefaultGroup = async (username)=>{
