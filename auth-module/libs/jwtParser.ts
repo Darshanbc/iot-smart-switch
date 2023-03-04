@@ -1,3 +1,4 @@
+// @ts-ignore
 import {verifierFactory} from "@southlane/cognito-jwt-verifier"
 
 export const getUsername=async(jwt:String):Promise<String>=> {
