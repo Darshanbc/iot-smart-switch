@@ -1,9 +1,6 @@
 
 services:
-  auth-module:
-    path: "./auth-module"
 
   switch-module:
     path: "./switch-module"
-    dependsOn: 
-      - auth-module
+

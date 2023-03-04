@@ -7,15 +7,11 @@ provider:
   runtime: python3.8
   stage: android-dev
   region: ap-south-1
-  package:
-    exclude:
-      - node_modules/**
-    include:
-      - requirements.txt
-    commands:
-      - pip install -r requirements.txt -t .
   environment:
     MONGODB_URI: mongodb+srv://darshan01075:North010@smartswitch.ph4sb.mongodb.net/?retryWrites=true&w=majority
+package:
+  include:
+    - requirements.txt
 
 
 functions:

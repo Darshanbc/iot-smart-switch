@@ -1,7 +1,13 @@
+import sys
+
+sys.path.insert(0, 'src/pkg')
+sys.path.insert(0,"libs")
 import json
+import pymongo
+import  utils
 
 
-def fetch_devices(event,lambda_context):
+def fetch_devices(event, lambda_context):
     body = {
         "devices": [{
             "deviceId": "switch001",
@@ -37,8 +43,8 @@ def fetch_devices(event,lambda_context):
     }
 
 
-def update_device_status(event,lambda_context):
+def update_device_status(event, lambda_context):
     return {
         "statusCode": 200,
-        "body":json.dumps({})
+        "body": json.dumps({})
     }
