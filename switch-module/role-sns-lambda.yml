@@ -1,0 +1,16 @@
+snsLambda:
+  Type: AWS::IAM::Role
+  Properties:
+    RoleName: sns-lambda-role-${self:provider.stage}
+    AssumeRolePolicyDocument:
+      Version: '2012-10-17'
+      Statement:
+      - Effect: Allow
+        Principal:
+          Service:
+          - lambda.amazonaws.com
+        Action: sts:AssumeRole
+    ManagedPolicyArns:
+    - arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole
+    - arn:aws:iam::aws:policy/AmazonSNSFullAccess
+    - arn:aws:iam::aws:policy/CloudWatchFullAccess

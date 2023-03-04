@@ -1,0 +1,12 @@
+ApiGatewayAuthorizer:
+  DependsOn:
+  - ApiGatewayRestApi
+  Type: AWS::ApiGateway::Authorizer
+  Properties:
+    Name: cognito_auth
+    Type: COGNITO_USER_POOLS
+    IdentitySource: method.request.header.Authorization
+    RestApiId:
+      Ref: ApiGatewayRestApi
+    ProviderARNs:
+      - !Join ['', ['arn:aws:cognito-idp:', !Ref 'AWS::Region', ':', !Ref 'AWS::AccountId', ':userpool/', !ImportValue "CognitoUserPoolSmartSwitchDemo-${self: provider.stage}"]]

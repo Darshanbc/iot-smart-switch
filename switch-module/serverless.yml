@@ -1,0 +1,47 @@
+service: iot-sw-poc-sw-control-service
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.8
+  stage: android-dev
+  region: ap-south-1
+  package:
+    exclude:
+      - node_modules/**
+    include:
+      - requirements.txt
+    commands:
+      - pip install -r requirements.txt -t .
+  environment:
+    MONGODB_URI: mongodb+srv://darshan01075:North010@smartswitch.ph4sb.mongodb.net/?retryWrites=true&w=majority
+
+
+functions:
+  fetch_devices:
+    handler: src/app.fetch_devices
+    events:
+      - http:
+          path: /v1/devices
+          method: get
+          authorizer:
+            type: COGNITO_USER_POOLS
+            authorizerId:
+              Ref: ApiGatewayAuthorizer
+  
+  update_status:
+    handler: src/app.update_device_status
+    events:
+      - http:
+          path: /v1/device/{device_id}
+          method: put
+          authorizer:
+            type: COGNITO_USER_POOLS
+            authorizerId:
+              Ref: ApiGatewayAuthorizer
+
+resources:
+  Resources:
+    ApiGatewayAuthorizer: ${file(./api-gateway-Authorizer.yml):ApiGatewayAuthorizer}
+
