@@ -1,5 +1,5 @@
 import json
-import pymongo
+
 
 def fetch_devices(event,lambda_context):
     body = {

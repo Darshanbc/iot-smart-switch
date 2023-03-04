@@ -10,8 +10,7 @@ export const getUsername=async(jwt:String):Promise<String>=> {
         tokenType: 'id', // either "access" or "id"
     })
     var tokenPayload = await verifier.verify(jwt)
-    const username:String = tokenPayload["cognito:username"]
-    return username
+    return tokenPayload["cognito:username"]
 }
 
 
